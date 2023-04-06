@@ -1,6 +1,6 @@
 
-document.addEventListener('DOMContentLoaded',ShowStoredData);
-  
+document.addEventListener('DOMContentLoaded', ShowStoredData);
+
 var ul = document.querySelector('ul');
 
 ////////////////kiliarfunct//////////////////
@@ -32,20 +32,20 @@ subfunct = (e) => {
     a.setAttribute('href', '#');
     a.innerHTML = 'X';
 
- 
+
     if (git.value === '') { alert('please give an input to proceed'); }
     else {
         li.appendChild(document.createTextNode
             (`${git.value} `));
         li.appendChild(a);
         ul.appendChild(li);
-           
-      store_e_jomai(git.value);
-       git.value = '';
-       
-    } 
+
+        store_e_jomai(git.value);
+        git.value = '';
+
+    }
     // e.preventDefault();
-}   
+}
 
 //////////////////////filti/////////////////
 filti = (f) => {
@@ -61,54 +61,51 @@ filti = (f) => {
 var t = document.querySelector('.t');
 t.addEventListener('keyup', filti);
 
-  
+
 ////////////store_e_jomai//////////////////
-function store_e_jomai (task)
-{let TASKS;
-if (localStorage.getItem('TASKS')===null)
-{TASKS=[];}
-else
-{
-    TASKS=JSON.parse(localStorage.getItem('TASKS'));
-}
-TASKS.push(task);
-localStorage.setItem('TASKS',JSON.stringify(TASKS))
+function store_e_jomai(task) {
+    let TASKS;
+    if (localStorage.getItem('TASKS') === null) { TASKS = []; }
+    else {
+        TASKS = JSON.parse(localStorage.getItem('TASKS'));
+    }
+    TASKS.push(task);
+    localStorage.setItem('TASKS', JSON.stringify(TASKS))
 
 }
 
 ///////////////ShowStoredData////////////////
 
-function ShowStoredData ()
-{   let TASKS;
-if (localStorage.getItem('TASKS')===null)
-{TASKS=[];}
-else
-{TASKS=
-    JSON.parse(localStorage.getItem('TASKS'))}
+function ShowStoredData() {
+    let TASKS;
+    if (localStorage.getItem('TASKS') === null) { TASKS = []; }
+    else {
+        TASKS =
+        JSON.parse(localStorage.getItem('TASKS'))
+    }
 
 
-TASKS.forEach(task=>
-    {let a = document.createElement('a');
-// var git = document.querySelector('.git');
-let li = document.createElement('li');
-a.setAttribute('href', '#');
-a.innerHTML = 'X';
-li.appendChild(document.createTextNode
-    (task+' '));
-li.appendChild(a);
-ul.appendChild(li);})
+    TASKS.forEach(task => {
+        let a = document.createElement('a');
+        // var git = document.querySelector('.git');
+        let li = document.createElement('li');
+        a.setAttribute('href', '#');
+        a.innerHTML = 'X';
+        li.appendChild(document.createTextNode
+            (task + ' '));
+        li.appendChild(a);
+        ul.appendChild(li);
+    })
 }
 /////////////////////////////////////////////// 
 ////////////////removing lis///////////////////
-function removing_lis (t)
-{let TASKS;
-if (localStorage.getItem('TASKS')===null)
-{TASKS=[];}
-else
-{TASKS=JSON.parse(localStorage.getItem('TASKS'));}
-t.removeChild(t.lastChild);
-TASKS.forEach((task,index)=>
-{if (t.textContent.trim()===task)
-{TASKS.splice(index,1);}} )
-localStorage.setItem('TASKS',JSON.stringify(TASKS));}
- 
+function removing_lis(t) {
+    let TASKS;
+    if (localStorage.getItem('TASKS') === null) { TASKS = []; }
+    else { TASKS = JSON.parse(localStorage.getItem('TASKS')); }
+    t.removeChild(t.lastChild);
+    TASKS.forEach((task, index) => {
+        if (t.textContent.trim() === task) { TASKS.splice(index, 1); }
+    })
+    localStorage.setItem('TASKS', JSON.stringify(TASKS));
+}
